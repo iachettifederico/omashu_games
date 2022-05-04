@@ -1,0 +1,23 @@
+version: "3.7"
+
+services:
+  app:
+    user: developer
+    hostname: conquered_self
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        BUNDLER_VERSION: "2.3.12"
+    volumes:
+      - type: bind
+        source: .
+        target: /workspace
+    working_dir: /workspace
+    command: sleep infinity
+    environment:
+      BUNDLE_PATH: vendor/bundle
+    ports:
+      - "9292:9292"
+
+ 
